@@ -46,7 +46,7 @@ parse.file<-function(file.name){
   dataT<-read.table(text=keep, sep=",", stringsAsFactors = FALSE)
   dataT<-dataT[,c(1,6,7,15)]
   colnames(dataT)<-c("Time","Azimuth","Elevation","TOI")
-  dataT[,"Time"]<-as.POSIXct(strptime(dataT$DT,format="%Y-%b-%d %H:%M:%S"),tz="UTC")
+  dataT[,"Time"]<-as.POSIXct(strptime(dataT$Time,format="%Y-%b-%d %H:%M:%S"),tz="UTC")
 # find and extract row with minimum ToI
   dataT<-dataT[which(dataT$TOI==-min(abs(dataT$TOI))),]
 # extract and add location to the dataframe
